@@ -146,8 +146,8 @@ def run_carla_client(args):
             # camera_90_p_r_to_car_transform = camera_90_p_r.get_unreal_transform()
 
             # Create a folder for saving episode data
-            if not os.path.isdir("/data/Datasets/carla_cross/episode_{:0>4d}".format(episode)):
-                os.makedirs("/data/Datasets/carla_cross/episode_{:0>4d}".format(episode))
+            if not os.path.isdir("/data/teddy/Datasets/carla_cross/Town01/episode_{:0>5d}".format(episode)):
+                os.makedirs("/data/teddy/Datasets/carla_cross/Town01/episode_{:0>5d}".format(episode))
 
             # Iterate every frame in the episode.
             for frame in range(0, frames_per_episode):
@@ -174,8 +174,8 @@ def run_carla_client(args):
                         # Save Transform matrix of each camera to separated files
                         for cam_num in range(7):
                             line = ""
-                            filename = "{0}episode_{{1}:0>5d}/HorizontalCamera{2}".format(args.root_path, episode, cam_num) + ".txt"
-                            with open(filename, 'a') as myfile:
+                            filename = "{}episode_{:0>5d}/HorizontalCamera{}".format(args.root_path, episode, cam_num) + ".txt"
+                            with open(filename, 'a+') as myfile:
                                 for x in np.asarray(horizontal_cameras_to_world[cam_num].matrix[:3, :]).reshape(-1):
                                     line += "{:.8e} ".format(x)
                                 line = line[:-1]
@@ -186,7 +186,7 @@ def run_carla_client(args):
                         for cam_num in range(7):
                             line = ""
                             filename = "{}episode_{:0>5d}/ForwardCamera{}".format(args.root_path, episode, cam_num) + ".txt"
-                            with open(filename, 'a') as myfile:
+                            with open(filename, 'a+') as myfile:
                                 for x in np.asarray(forward_cameras_to_world[cam_num].matrix[:3, :]).reshape(-1):
                                     line += "{:.8e} ".format(x)
                                 line = line[:-1]
@@ -286,8 +286,8 @@ def main():
 
     logging.info('listening to server %s:%s', args.host, args.port)
 
-    args.out_filename_format = '/data/Datasets/carla_cross/episode_{:0>4d}/{:s}/{:0>6d}'
-    args.root_path = '/data/Datasets/carla_cross/'
+    args.out_filename_format = '/data/teddy/Datasets/carla_cross/Town01/episode_{:0>5d}/{:s}/{:0>6d}'
+    args.root_path = '/data/teddy/Datasets/carla_cross/Town01/'
 
     while True:
         try:
