@@ -162,6 +162,9 @@ def run_carla_client(args):
                 horizontal_cameras_to_world = []
                 forward_cameras_to_world = []
                 for i in range(7):
+                    # print(type(world_transform))
+                    # print(horizontal_cameras_to_car[i].shape)
+                    # exit()
                     horizontal_cameras_to_world.append(world_transform * horizontal_cameras_to_car[i])
                     forward_cameras_to_world.append(world_transform * forward_cameras_to_car[i])
                 # Save the images to disk if requested.
