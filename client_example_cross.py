@@ -30,9 +30,11 @@ import cv2
 def run_carla_client(args):
     # Here we will run 3 episodes with 300 frames each.
     number_of_episodes = 15
-    frames_per_episode = 2030
+    frames_per_episode = 030
     #              [0  , 1  , 2  , 3  , 4  , 5  , 6 , 7, 8  , 9  , 10, 11, 12, 13, 14]
+    # vehicles_num = [60, 60, 70, 50, 60, 60, 80, 60, 60, 60, 50, 70, 60, 50, 50]
     vehicles_num = [60, 60, 70, 50, 60, 60, 80, 60, 60, 60, 50, 70, 60, 50, 50]
+
 
     # We assume the CARLA server is already waiting for a client to connect at
     # host:port. To create a connection we can use the `make_carla_client`
@@ -75,21 +77,21 @@ def run_carla_client(args):
                     camera_rgb = Camera('HorizontalCamera{0}RGB'.format(i),
                                      PostProcessing='SceneFinal')
                     camera_rgb.set_image_size(800, 600)
-                    camera_rgb.set_position(1.30, y_position, 1.50)
+                    camera_rgb.set_position(2.92, y_position, 1.50)
                     horizontal_cameras['HorizontalCamera{0}RGB'.format(i)] = camera_rgb
                     settings.add_sensor(camera_rgb)
                     # DEPTH
                     camera_depth = Camera('HorizontalCamera{0}Depth'.format(i),
                                           PostProcessing='Depth')
                     camera_depth.set_image_size(800, 600)
-                    camera_depth.set_position(1.30, y_position, 1.50)
+                    camera_depth.set_position(2.92, y_position, 1.50)
                     horizontal_cameras['HorizontalCamera{0}Depth'.format(i)] = camera_depth
                     settings.add_sensor(camera_depth)
                     # SEGMENTATION
                     camera_seg = Camera('HorizontalCamera{0}Seg'.format(i),
                                        PostProcessing='SemanticSegmentation')
                     camera_seg.set_image_size(800, 600)
-                    camera_seg.set_position(1.30, y_position, 1.50)
+                    camera_seg.set_position(2.92, y_position, 1.50)
                     horizontal_cameras['HorizontalCamera{0}Seg'.format(i)] = camera_seg
                     settings.add_sensor(camera_seg)
 
