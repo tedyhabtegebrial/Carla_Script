@@ -30,7 +30,7 @@ import cv2
 def run_carla_client(args):
     # Here we will run 3 episodes with 300 frames each.
     number_of_episodes = 15
-    frames_per_episode = 030
+    frames_per_episode = 10030
     #              [0  , 1  , 2  , 3  , 4  , 5  , 6 , 7, 8  , 9  , 10, 11, 12, 13, 14]
     # vehicles_num = [60, 60, 70, 50, 60, 60, 80, 60, 60, 60, 50, 70, 60, 50, 50]
     vehicles_num = [60, 60, 70, 50, 60, 60, 80, 60, 60, 60, 50, 70, 60, 50, 50]
