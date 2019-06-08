@@ -71,33 +71,34 @@ def run_carla_client(args):
                 # [-1.62, -1.08, -0.54, 0.0, 0.54, 1.08, 1.62]
                 # LEFT RGB CAMERA
                 y_locs = [-1.62, -1.08, -0.54, 0.0, 0.54, 1.08, 1.62]
+                x_locs = [1.3, 1.84, 2.38, 2.92, 3.46, 4.0, 4.54]
                 horizontal_cameras = {}
                 for i,y_position in enumerate(y_locs):
                     # COLOR
                     camera_rgb = Camera('HorizontalCamera{0}RGB'.format(i),
                                      PostProcessing='SceneFinal')
                     camera_rgb.set_image_size(800, 600)
-                    camera_rgb.set_position(2.92, y_position, 1.50)
+                    camera_rgb.set_position(x_locs[3], y_position, 1.50)
                     horizontal_cameras['HorizontalCamera{0}RGB'.format(i)] = camera_rgb
                     settings.add_sensor(camera_rgb)
                     # DEPTH
                     camera_depth = Camera('HorizontalCamera{0}Depth'.format(i),
                                           PostProcessing='Depth')
                     camera_depth.set_image_size(800, 600)
-                    camera_depth.set_position(2.92, y_position, 1.50)
+                    camera_depth.set_position(x_locs[3], y_position, 1.50)
                     horizontal_cameras['HorizontalCamera{0}Depth'.format(i)] = camera_depth
                     settings.add_sensor(camera_depth)
                     # SEGMENTATION
                     camera_seg = Camera('HorizontalCamera{0}Seg'.format(i),
                                        PostProcessing='SemanticSegmentation')
                     camera_seg.set_image_size(800, 600)
-                    camera_seg.set_position(2.92, y_position, 1.50)
+                    camera_seg.set_position(x_locs[3], y_position, 1.50)
                     horizontal_cameras['HorizontalCamera{0}Seg'.format(i)] = camera_seg
                     settings.add_sensor(camera_seg)
 
                 forward_cameras = {}
                 # z_locs = [1.5, 2.04, 2.58, 3.12, 3.66, 4.2, 4.74]
-                x_locs = [1.3, 1.84, 2.38, 2.92, 3.46, 4.0, 4.54]
+
                 # Cameras moving in to the scene
                 # the are moved across the x axis
                 # camera_90_p_ls.set_position(0.27, 1.0, 1.50)
@@ -106,21 +107,21 @@ def run_carla_client(args):
                     camera_rgb = Camera('ForwardCamera{0}RGB'.format(i),
                                      PostProcessing='SceneFinal')
                     camera_rgb.set_image_size(800, 600)
-                    camera_rgb.set_position(x_position, 0.0, 1.5)
+                    camera_rgb.set_position(x_position, y_locs[3], 1.5)
                     forward_cameras['ForwardCamera{0}RGB'.format(i)] = camera_rgb
                     settings.add_sensor(camera_rgb)
                     # DEPTH
                     camera_depth = Camera('ForwardCamera{0}Depth'.format(i),
                                           PostProcessing='Depth')
                     camera_depth.set_image_size(800, 600)
-                    camera_depth.set_position(x_position, 0.0, 1.5)
+                    camera_depth.set_position(x_position, y_locs[3], 1.5)
                     forward_cameras['ForwardCamera{0}Depth'.format(i)] = camera_depth
                     settings.add_sensor(camera_depth)
                     # SEGMENTATION
                     camera_seg = Camera('ForwardCamera{0}Seg'.format(i),
                                        PostProcessing='SemanticSegmentation')
                     camera_seg.set_image_size(800, 600)
-                    camera_seg.set_position(x_position, 0.0, 1.5)
+                    camera_seg.set_position(x_position, y_locs[3], 1.5)
                     forward_cameras['ForwardCamera{0}Seg'.format(i)] = camera_seg
                     settings.add_sensor(camera_seg)
             else:
